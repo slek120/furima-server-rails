@@ -5,7 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 # Use MySQL and sqlite3 as the database for Active Record
 gem 'mysql2'
-gem 'sqlite3'
+# Use Slim template engine
+gem 'slim-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -60,7 +61,11 @@ gem 'split', :require => 'split/dashboard'
 # gem 'remotipart'
 # gem 'carrierwave'
 # gem 'rmagick', require: false
+# gem 'mini_magick'
 # gem 'fog'
+
+# Charts
+# gem 'chartkick'
 
 
 group :development do
@@ -74,10 +79,11 @@ group :development do
 
   # gem 'bullet'
   # gem 'better_errors'
-  # gem 'annotate'
+  gem 'annotate'
 end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'guard-rspec'
