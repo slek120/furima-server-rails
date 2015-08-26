@@ -41,7 +41,7 @@ gem 'meta-tags'
 gem 'split', :require => 'split/dashboard'
 
 # Bootstrap library
-# gem 'bootstrap-sass'
+gem 'bootstrap-sass'
 # gem 'bootstrap-wysihtml5-rails' # Text input
 
 # Tags
@@ -56,6 +56,7 @@ gem 'split', :require => 'split/dashboard'
 # gem 'omniauth'
 # gem 'omniauth-twitter'
 # gem 'omniauth-facebook'
+# gem 'cancancan' # For restrictions and privileges
 
 # Image upload
 # gem 'remotipart'
@@ -78,7 +79,7 @@ group :development do
   # gem 'capistrano-rails-console'
 
   # gem 'bullet'
-  # gem 'better_errors'
+  gem 'better_errors'
   gem 'annotate'
 end
 
