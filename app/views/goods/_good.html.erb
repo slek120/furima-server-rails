@@ -1,0 +1,13 @@
+<div class='good'>
+  <div class='title'>
+    <%= good.title %>
+  </div>
+  <div class='body'>
+    <%= good.body %>
+  </div>
+  <div class='price'>
+    <%= number_to_currency(good.price) %>
+  </div>
+  <%= link_to 'Edit', edit_good_path(good) %>
+  <%= link_to 'Delete', good_path(good), method: 'delete' %>
+</div>

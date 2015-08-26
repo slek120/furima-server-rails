@@ -1,0 +1,7 @@
+= form_for Good.new do |f|
+  = f.label :good
+  = f.text_field :title, placeholder: 'タイトル'
+  = f.text_field :body, placeholder: '本文'
+  = f.number_field :price, placeholder: '値段'
+  = f.date_field :expired_at
+  = f.submit
