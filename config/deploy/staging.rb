@@ -25,6 +25,8 @@ set :deploy_to, '/home/ec2-user/furima-server-rails/staging'
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
+
+
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
