@@ -63,7 +63,7 @@ gem 'bootstrap-sass'
 # gem 'carrierwave'
 # gem 'rmagick', require: false
 # gem 'mini_magick'
-# gem 'fog'
+# gem 'fog-aws'
 
 # Charts
 # gem 'chartkick'

@@ -27,7 +27,7 @@ rvm use ruby --install --default
 gem install rails --no-ri --no-rdoc
 ```
 * You probably want sublime
-https://www.sublimetext.com/
+https://www.sublimetext.com
 
 
 ### Get the project
