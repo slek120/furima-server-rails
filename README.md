@@ -1,6 +1,7 @@
-Follow these instructions at http://installrails.com/
+Follow these instructions at http://installrails.com
 * X-code
 App Store > Xcode > Install
+
 Xcode > Preferences > Locations > Command Line Tools (Verify version)
 * Homebrew
 Open Terminal
