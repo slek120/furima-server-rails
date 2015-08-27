@@ -72,9 +72,9 @@ gem 'bootstrap-sass'
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-bundler'
-  # gem 'capistrano-rbenv'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
   # gem 'capistrano3-unicorn'
   # gem 'capistrano-rails-console'
 
