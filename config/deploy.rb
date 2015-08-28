@@ -11,6 +11,8 @@ role :db,  %w{furima}
 set :rbenv_ruby, '2.2.3'
 set :user, 'ec2-user'
 set :deploy_via, :remote_cache
+set :use_sudo, false
+set :port, 22
 
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -30,6 +32,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+after 'deploy:publishing', 'deploy:restart'
+
 namespace :deploy do
   # Compresses all .js and .css files under the assets path.
   # 
@@ -45,6 +49,11 @@ namespace :deploy do
   #     end
   #   end
   # end
+
+  desc 'Restart application'
+  task :restart do
+    invoke 'unicorn:reload'
+  end
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
