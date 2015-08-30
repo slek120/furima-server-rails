@@ -307,7 +307,6 @@ DEPENDENCIES
   meta-tags
   mina
   mysql2
-  omniauth
   omniauth-facebook
   omniauth-google-oauth2
   passenger
