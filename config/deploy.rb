@@ -3,10 +3,10 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 
-set :domain, 'http://ec2-52-88-0-200.us-west-2.compute.amazonaws.com/'
+set :domain, '52.88.0.200'
 set :user, 'furima'
 set :identity_file, 'furima_key.pem'
-set :deploy_to, '/var/apps/furima/#{rails_env}'
+set :deploy_to, '/var/apps/furima/'
 set :repository, 'https://github.com/slek120/furima-server-rails.git'
 set :branch, 'master'
 
