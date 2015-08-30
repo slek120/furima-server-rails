@@ -1,282 +1,231 @@
-Follow these instructions at http://installrails.com
-* X-code
-App Store > Xcode > Install
+# Environment
 
-Xcode > Preferences > Locations > Command Line Tools (Verify version)
-* Homebrew
-Open Terminal
-```zsh
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-* Git (Register on github.com and use same email)
-```zsh
-brew install git
-git config --global user.name "Your Actual Name"
-git config --global user.email "Your Actual Email"
-```
-* Ruby
-```zsh
-\curl -L https://get.rvm.io | bash -s stable
-```
-close and restart terminal
-```zsh
-rvm use ruby --install --default
-```
-* Rails
-```zsh
-gem install rails --no-ri --no-rdoc
-```
-* You probably want sublime
-https://www.sublimetext.com
+* Ubuntu 14.04
+* ruby 2.2.3
+* rails 4.2.1
+* nginx 1.8.0
+* passenger 5.0.16
 
+# Setup
 
-### Get the project
-```zsh
-git clone git@github.com:slek120/furima-server-rails.git
-```
+[First install git, ruby, and rails](http://installrails.com/)
 
-### Version
+If you don't have mysql, install and start service
 
-* Ruby 2.2.2
-* Rails 4.2.1
+    brew install mysql
+    mysql.server start
 
-### Setup
+Get the project
 
-* Create config/database.yml with this structure
+    # Make a folder called "furima" in "Documents"
+    mkdir ~/Documents/furima
 
-```yml
-default: &default
-  adapter: mysql2
-  pool: 5
-  timeout: 5000
-  username: root
-  charset: utf8mb4
-  encoding: utf8mb4
-  collation: utf8mb4_general_ci
+    # Copy project into folder
+    git clone https://github.com/slek120/furima-server-rails.git mkdir ~/Documents/furima/furima-server-rails
+    
+    # Change directory to project
+    cd ~/Documents/furima/furima-server-rails
 
-development:
-  <<: *default
-  database: furima_development
+    # Install ruby gems necessary for project
+    bundle install
 
-test:
-  <<: *default
-  database: db/test.sqlite3
+    # Configure the database
+    vi config/database.yml
 
-staging:
-  <<: *default
-  database: furima_staging
-  username: furima
-  password: <password>
-  host: <host>
+#### database.yml
 
-production:
-  <<: *default
-  database: furima_production
-  username: furima
-  password: <password>
-  host: <host>
-```
+    default: &default
+      adapter: mysql2
+      encoding: utf8mb4
+      collation: utf8mb4_bin
+      pool: 5
+      timeout: 5000
+      port: 3306
+      username: root
 
-* Create config/secrets.yml with this structure
+    # Warning: The database defined as "test" will be erased and
+    # re-generated from your development database when you run "rake".
+    # Do not set this db to the same as development or production.
+    test:
+      <<: *default
+      database: db/test
 
-```yml
-test:
-  secret_key_base:         # run command "rake secret"
+    development:
+      <<: *default
+      database: furima_development
 
-development:
-  <<: *default
-  secret_key_base:         # run command "rake secret"
-  facebook_app_id:         # Facebook App ID
-  facebook_app_secret:     # Facebook App Secret
+type ":wq" to save and quit
 
-staging:
-  <<: *production
-  secret_key_base:         # run command "rake secret"
-  facebook_app_id:         # Facebook App ID
-  facebook_app_secret:     # Facebook App Secret
+    # Migrate and seed the database
+    rake db:migrate
+    rake db:seed
 
-production: &production
-  <<: *default
-  secret_key_base:         # run command "rake secret"
-  facebook_app_id:         # Facebook App ID
-  facebook_app_secret:     # Facebook App Secret
-```
+    # Configure secrets
+    rake secret
+    # copy the output
+    vi config/secrets.yml
 
-* Seed the database
+#### secrets.yml
 
-```zsh
-bin/rake db:seed
-```
+    test:
+      secret_key_base: # the copied output from "rake secret"
 
-* Redis (optional)
+    development:
+      secret_key_base: # another copied output from "rake secret"
 
-```zsh
-brew install redis
-redis-server /usr/local/etc/redis.conf
-```
+type ":wq" to save and quit
 
-* Start the server
+Run the server
+    
+    rails server
 
-```zsh
-rails server
-```
-Now go to http://localhost:3000
+#### Test the website at [http://localhost:3000](http://localhost:3000)
 
+# Server setup
 
-### Web server setup
+[tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-passenger-and-nginx-on-ubuntu-14-04)
 
-* Install yum
+## Create user
 
-```zsh
-sudo yum update -y
-sudo yum install -y zsh git gcc patch gcc-c++ readline readline-devel zlib zlib-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison iconv-devel
-```
+    sudo adduser furima
+    sudo visudo
 
+Find the lines
 
-* ruby, bundler
+    ## Allow root to run any commands anywhere
+    root    ALL=(ALL)   ALL
 
-```zsh
-git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
-echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
-git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+and add the line
+    
+    furima  ALL=(ALL)   ALL
 
-rbenv install 2.2.2
-rbenv global 2.2.2
+ctrl-x and confirm with y to save and exit
 
-gem install bundler --no-ri --no-rdoc
-rbenv rehash
-```
-* nginx
+    # Change to furima user
+    su - furima
 
-```zsh
-sudo vi /etc/yum.repos.d/nginx.repo
-```
+## Install development tools
 
-```repo
-[nginx]
-name=nginx repo
-baseurl=http://nginx.org/packages/centos/6/$basearch/
-gpgcheck=0
-enabled=1
-```
+    sudo apt-get update
+    sudo apt-get install build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3
 
-```zsh
-sudo yum install nginx -y
-sudo chkconfig nginx on
-```
+## Install ruby
 
+    # rbenv
+    # https://github.com/sstephenson/rbenv
+    git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    type rbenv
+    # => rbenv is a function
 
-* ImageMagic
+    # rbenv-build
+    # https://github.com/sstephenson/ruby-build
+    git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+    rbenv install 2.2.3
+    rbenv global 2.2.3
 
-```
-sudo yum install ImageMagick ImageMagick-devel -y
-```
+    # rbenv-vars
+    # https://github.com/sstephenson/rbenv-vars
+    git clone https://github.com/sstephenson/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
+    vi ~/.rbenv-vars
 
-* MySQL
+#### .rbenv-vars
 
-```zsh
-sudo yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-sudo yum install -y mysql mysql-devel
-```
+    SECRET_KEY_BASE = # get secret key base by running command "rake secret"
+    FACEBOOK_APP_ID = # facebook app id
+    FACEBOOK_APP_SECRET = # facebook app secret
+    FURIMA_DATABASE_PASSWORD = # database password
 
-* nokogiri
+type ":wq" to save and quit
 
-```zsh
-sudo yum install -y libxml2-devel libxslt-devel ruby-devel
-sudo yum --enablerepo=epel install -y rubygem-nokogiri
-```
+## Install passenger and nginx
 
-* Nginx settings
+[tutorial](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)
 
-```zsh
-sudo vi /etc/nginx/conf.d/furima-server-rails.conf
-```
+    # Install a PGP key
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
+    sudo apt-get install -y apt-transport-https ca-certificates
 
-```vim
-server_tokens off;
+    # Add phusion's APT repository
+    sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main > /etc/apt/sources.list.d/passenger.list'
+    sudo apt-get update
 
-upstream furima.com {
-  server unix:/tmp/unicorn.furima.sock;
-}
+    # Install Passenger + Nginx
+    sudo apt-get install -y nginx-extras passenger
 
-server {
-    listen       80;
-    server_name  furima-server-rails;
-    root         /usr/share/nginx/html;
-    client_max_body_size 20M;
+    # Configure Passenger
+    sudo vi /etc/nginx/conf.d/passenger.conf
 
-    location ~ ^/uploads/ {
-        root    /home/ec2-user/furima-server-rails/current/public;
-        gzip_static on; # to serve pre-gzipped version
-        expires 1y;
-        add_header Cache-Control public;
-        add_header ETag "";
-        break;
-    }
+#### passenger.conf
 
-    location ~ ^/assets/ {
-        root     /home/ec2-user/furima-server-rails/current/public;
-        gzip_static on; # to serve pre-gzipped version
-        expires 1y;
-        add_header Cache-Control public;
-        add_header ETag "";
-        break;
-    }
+    passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
+    passenger_ruby /home/furima/.rbenv/shims/ruby;
+    passenger_show_version_in_header off;
+    passenger_max_pool_size 10;
 
-    location = /wysiwyg.css {
-      root    /home/ec2-user/furima-server-rails/current/public;
-    }
+type ":wq" to save and quit
 
-    location / {
-        proxy_pass http://furima.com;
-    }
+#### Check install
 
-    location = /robots.txt {
-      root    /home/ec2-user/furima-server-rails/current/public;
-    }
-
-    location = /sitemap.xml.gz {
-      root    /home/ec2-user/furima-server-rails/current/public;
-    }
-
-    # redirect server error pages to the static page /40x.html
+    sudo passenger-config validate-install
+    sudo passenger-memory-stats
+    # ---------- Nginx processes ----------
+    # PID    PPID   VMSize   Private  Name
+    # -------------------------------------
+    # 12443  4814   60.8 MB  0.2 MB   nginx: master process /usr/sbin/nginx
+    # 12538  12443  64.9 MB  5.0 MB   nginx: worker process
+    # ### Processes: 3
+    # ### Total private dirty RSS: 5.56 MB
     #
-    error_page  404              /404.html;
-    location = /40x.html {
+    # ----- Passenger processes ------
+    # PID    VMSize    Private   Name
+    # --------------------------------
+    # 12517  83.2 MB   0.6 MB    PassengerAgent watchdog
+    # 12520  266.0 MB  3.4 MB    PassengerAgent server
+    # 12531  149.5 MB  1.4 MB    PassengerAgent logger
+
+## Configure nginx
+
+    sudo vi /etc/nginx/sites-available/default
+
+find the lines
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+and comment them out
+
+    # listen 80 default_server;
+    # listen [::]:80 default_server ipv6only=on;
+
+type ":wq" to save and quit
+
+create new site configuration
+
+    sudo vi /etc/nginx/sites-available/furima
+
+#### furima
+
+    server {
+      listen 80 default_server;
+      server_name www.furima.com;
+      passenger_enabled on;
+      passenger_app_env production;
+      root /home/furima/furima-server-rails/current/public;
     }
 
-    # redirect server error pages to the static page /50x.html
-    #
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-    }
-}
-```
+type ":wq" to save and quit
 
-* nginx restart
+Create a symbolic link to sites-enabled
 
-```zsh
-sudo service nginx restart
+    sudo ln -s /etc/nginx/sites-available/furima /etc/nginx/sites-enabled/furima
 
-sudo chmod 755 /
-chmod 755 ~
-```
+Restart nginx
 
-* Memcached
+    sudo nginx -s reload
 
-```zsh
-sudo yum install memcached
-sudo chkconfig memcached on
-sudo service memcached start
-```
+# Deploy to server
 
-* Redis
-
-```
-sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
-sudo yum --enablerepo=remi install -y redis
-
-sudo redis-server /etc/redis.conf&
-sudo chkconfig redis on
-```
+    mina setup
+    mina deploy
