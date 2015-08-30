@@ -77,6 +77,8 @@ type ":wq" to save and quit
 
 Run the server
     
+    passenger start
+    # or
     rails server
 
 #### Test the website at [http://localhost:3000](http://localhost:3000)
@@ -129,7 +131,7 @@ ctrl-x and confirm with y to save and exit
     # rbenv-vars
     # https://github.com/sstephenson/rbenv-vars
     git clone https://github.com/sstephenson/rbenv-vars.git ~/.rbenv/plugins/rbenv-vars
-    vi ~/.rbenv-vars
+    vi ~/.rbenv/vars
 
 #### .rbenv-vars
 
@@ -142,7 +144,7 @@ type ":wq" to save and quit
 
 ## Install passenger and nginx
 
-[tutorial](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)
+[Installing Passenger + Nginx](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)
 
     # Install a PGP key
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
