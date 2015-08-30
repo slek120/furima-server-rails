@@ -1,0 +1,29 @@
+.sessions {
+  .new {
+    max-width: 330px;
+    padding: 15px;
+    margin: $navbar-height+15px auto 0;
+    .form-control:focus {
+      z-index: 2;
+    }
+    input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .facebook {
+      margin-top: 5px;
+      color: #fff;
+      background-color: #3b5999;
+    }
+    .google {
+      color: #fff;
+      background-color: #f44336;
+    }
+  }
+}
