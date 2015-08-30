@@ -52,10 +52,10 @@ gem 'bootstrap-sass'
 # gem 'kaminari'
 
 # Log in
-# gem 'devise'
+gem 'devise', github: 'plataformatec/devise'
 # gem 'omniauth'
 # gem 'omniauth-twitter'
-# gem 'omniauth-facebook'
+gem 'omniauth-facebook'
 # gem 'cancancan' # For restrictions and privileges
 
 # Image upload
