@@ -304,6 +304,7 @@ DEPENDENCIES
   meta-tags
   mina
   mysql2
+  omniauth
   omniauth-facebook
   passenger
   rails (= 4.2.1)

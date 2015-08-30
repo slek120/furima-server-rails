@@ -53,7 +53,7 @@ gem 'bootstrap-sass'
 
 # Log in
 gem 'devise', github: 'plataformatec/devise'
-# gem 'omniauth'
+gem 'omniauth'
 # gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 # gem 'cancancan' # For restrictions and privileges
