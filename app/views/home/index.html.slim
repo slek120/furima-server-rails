@@ -1,5 +1,7 @@
 h1 ふりま
 - if user_signed_in?
-  = link_to 'Logout', destroy_user_session_path, method: :delete, rel:'nofollow'
+  .btn= link_to 'Logout', destroy_user_session_path, method: :delete, rel:'nofollow'
 - else
-  = link_to 'Login', new_user_session_path, rel: 'nofollow'
+  .btn= link_to 'Login', new_user_session_path, rel: 'nofollow'
+  .btn= link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook), rel: 'nofollow'
+  .btn= link_to 'Sign in with Google', user_omniauth_authorize_path(:google_oauth2), rel: 'nofollow'
