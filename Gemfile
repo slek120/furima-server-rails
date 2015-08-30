@@ -56,6 +56,7 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth'
 # gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 # gem 'cancancan' # For restrictions and privileges
 
 # Image upload
