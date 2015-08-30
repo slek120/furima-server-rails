@@ -31,8 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Send error logs to email
 gem 'exception_notification'
 
-# Use Unicorn as the app server
-gem 'unicorn'
+# Use Passenger as the app server
+gem 'passenger'
 
 # Title and description tags
 gem 'meta-tags'

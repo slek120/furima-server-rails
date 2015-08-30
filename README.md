@@ -83,7 +83,8 @@ Run the server
 
 # Server setup
 
-[tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-passenger-and-nginx-on-ubuntu-14-04)
+[How To Deploy a Rails App with Passenger and Nginx on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-rails-app-with-passenger-and-nginx-on-ubuntu-14-04)
+[Deploying a Ruby app with Passenger to production](https://www.phusionpassenger.com/library/walkthroughs/deploy/ruby/)
 
 ## Create user
 
@@ -132,10 +133,10 @@ ctrl-x and confirm with y to save and exit
 
 #### .rbenv-vars
 
-    SECRET_KEY_BASE = # get secret key base by running command "rake secret"
-    FACEBOOK_APP_ID = # facebook app id
-    FACEBOOK_APP_SECRET = # facebook app secret
-    FURIMA_DATABASE_PASSWORD = # database password
+    SECRET_KEY_BASE= # get secret key base by running command "rake secret"
+    FACEBOOK_APP_ID= # facebook app id
+    FACEBOOK_APP_SECRET= # facebook app secret
+    FURIMA_DATABASE_PASSWORD= # database password
 
 type ":wq" to save and quit
 
