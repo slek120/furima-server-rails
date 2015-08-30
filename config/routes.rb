@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
   
   resources :goods
+  get 'about' => 'home#about'
+  get 'terms_of_use' => 'home#terms_of_use'
+  get 'privacy_policy' => 'home#privacy_policy'
+  get 'help' => 'home#help'
+  get 'contact' => 'home#contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

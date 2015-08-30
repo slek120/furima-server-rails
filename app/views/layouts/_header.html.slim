@@ -1,0 +1,16 @@
+header
+  nav.navbar.navbar-default.navbar-fixed-top
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#navbar'
+          span.glyphicon.glyphicon-menu-hamburger
+        = link_to 'ふりま', root_path, class: 'navbar-brand'
+      #navbar.navbar-collapse.collapse
+        ul.nav.navbar-nav
+          li= link_to 'マイページ', '#'
+          li= link_to '部屋', '#'
+          li= link_to '家', '#'
+          li= link_to '車', '#'
+          li= link_to '品物', goods_path
+          li= link_to 'イベント', '#'
+          li= link_to 'メンバー募集', '#'

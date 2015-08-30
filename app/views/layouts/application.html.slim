@@ -51,7 +51,18 @@ html
       |     "http://plus.google.com/+furima"
       |   ]
       | }
-  body class="#{controller.class.parent.name.downcase} #{controller.controller_name}"
-    p.notice= notice
-    p.alert= alert
-    = yield
+  body class='#{controller.controller_name} #{action_name}'
+    = render 'layouts/header'
+    .main.container-fluid
+      - if notice
+        .alert.alert-info.alert-dismissable role='alert'
+          button type='button' class='close' data-dismiss='alert' aria-label='Close'
+            span class="glyphicon glyphicon-ok" aria-hidden="true"
+          = notice
+      - if alert
+        .alert.alert-warning.alert-dismissable role='alert'
+          button type='button' class='close' data-dismiss='alert' aria-label='Close'
+            span class="glyphicon glyphicon-remove" aria-hidden="true"
+          = alert
+      = yield
+    = render 'layouts/footer'
