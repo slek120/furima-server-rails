@@ -70,17 +70,14 @@ gem 'bootstrap-sass'
 
 
 group :development do
-  # Use Capistrano for deployment
-  gem 'capistrano'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
-  # gem 'capistrano-rails-console'
+  # Use Mina for deployment
+  gem 'mina'
+  # gem 'mina-nginx'
 
   # gem 'bullet'
   gem 'better_errors'
   gem 'annotate'
+  gem 'letter_opener'
 end
 
 group :development, :test do
