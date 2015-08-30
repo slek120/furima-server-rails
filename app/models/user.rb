@@ -29,4 +29,22 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
+
+
+  def self.from_omniauth(access_token)
+    user = User.where(provider: access_token.provider, uid: access_token.uid).first
+    # Find user using provider and unique id
+    # If not found, create a new user with the following data    
+    unless user
+      user = User.create(
+        provider: access_token.provider,
+        uid:      access_token.uid,
+        name:     access_token.info.name,
+        email:    access_token.info.email,
+        password: Devise.friendly_token[0,20]
+      )
+    end
+    user
+  end
 end
