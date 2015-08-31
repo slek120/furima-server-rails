@@ -45,8 +45,7 @@ gem 'bootstrap-sass'
 # gem 'bootstrap-wysihtml5-rails' # Text input
 
 # Web components
-gem 'sprockets', '~> 3.0'
-gem 'polymer-rails'#, github: 'slek120/polymer-rails'
+gem 'polymer-rails', github: 'slek120/polymer-rails'
 
 # Tags
 # gem 'awesome_nested_set'
