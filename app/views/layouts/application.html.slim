@@ -53,6 +53,10 @@ html
       | }
   body class='#{controller.controller_name}'
     = render 'layouts/header'
+    - if content_for? :jumbotron
+      .jumbotron
+        .container-fluid
+          = yield :jumbotron
     .main.container-fluid class='#{action_name}'
       - if notice
         .alert.alert-info.alert-dismissable role='alert'
