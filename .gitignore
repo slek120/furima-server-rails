@@ -48,9 +48,9 @@ config/database.yml
 .rvmrc
 
 # if using bower-rails ignore default bower_components path bower.json files
-/vendor/assets/bower_components
-*.bowerrc
-bower.json
+/vendor/assets/components
+# *.bowerrc
+# bower.json
 
 # Ignore pow environment settings
 .powenv
