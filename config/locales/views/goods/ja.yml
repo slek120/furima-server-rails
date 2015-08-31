@@ -1,0 +1,7 @@
+ja:
+  goods:
+    form:
+      title: タイトル
+      body: 本文
+      price: 値段
+      expired_at: 期限
