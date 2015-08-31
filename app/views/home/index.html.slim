@@ -1,6 +1,6 @@
 = content_for :jumbotron
-  h1 ふりま
+  h1= t('title')
 - if user_signed_in?
-  = link_to 'Logout', destroy_user_session_path, method: :delete, rel:'nofollow', class: 'btn btn-default btn-sm'
+  = link_to t('btn.logout'), destroy_user_session_path, method: :delete, rel:'nofollow', class: 'btn btn-default btn-sm'
 - else
-  = link_to 'Login', new_user_session_path, rel: 'nofollow', class: 'btn btn-default btn-sm'
+  = link_to t('login'), new_user_session_path, rel: 'nofollow', class: 'btn btn-default btn-sm'

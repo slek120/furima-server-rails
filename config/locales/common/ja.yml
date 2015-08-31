@@ -1,0 +1,47 @@
+ja:
+  title: ふりま
+  copyright: "Copyright© Furima co. ltd. All rights Reserved."
+  btn:
+    add: 追加
+    back: もどる
+    comment: コメントする
+    create: 作成
+    preview: プレビュー
+    complete: 完成
+    delete: 削除
+    destroy_confirm: 削除してよろしいですか？
+    edit: 編集
+    edit_command: 編集する
+    edit_complete: 編集完了
+    add_favorite: お気に入りに追加
+    remove_favorite: お気に入りから削除
+    go_to_top: ページトップへ
+    login: ログイン
+    login_with_facebook: Facebook
+    login_with_twitter: Twitter
+    logout: ログアウト
+    move: 移動
+    read_more: もっと見る
+    reply: コメント返信
+    search: 検索
+    send: 送信
+    sign_up: 新規登録
+    forgot_your_password: パスワードを忘れたら
+    send_reset_password_instructions: パスワード再設定のメールを送信
+  path:
+    home: トップ
+    profile: マイページ
+    rooms: 部屋
+    houses: 家
+    cars: 車
+    goods: 品物
+    events: イベント
+    groups: メンバー募集
+    recruit: 派遣
+    guides: 情報
+    about: ふりまとは
+    terms: 利用規約
+    privacy: プライバシーポリシー
+    help: ヘルプ
+    contact: お問い合わせ
+

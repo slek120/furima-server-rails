@@ -1,9 +1,9 @@
 footer
   .container-fluid
     ul.text-center
-      li= link_to 'ふりまとは', about_path
-      li= link_to '利用規約', terms_of_use_path
-      li= link_to 'プライバシーポリシー', privacy_policy_path
-      li= link_to 'ヘルプ', help_path
-      li= link_to 'お問い合わせ', contact_path
-    .copyright.text-center Copyright© Furima co. ltd. All rights Reserved.
+      li= link_to t('path.about'), about_path
+      li= link_to t('path.terms'), terms_of_use_path
+      li= link_to t('path.privacy'), privacy_policy_path
+      li= link_to t('path.help'), help_path
+      li= link_to t('path.contact'), contact_path
+    .copyright.text-center= t('copyright')
