@@ -1,9 +1,16 @@
-.good
-  .title
-    = good.title
-  .body
-    = good.body
-  .price
-    = number_to_currency(good.price)
-  = link_to 'Edit', edit_good_path(good)
-  = link_to 'Delete', good_path(good), method: 'delete'
+/ .good
+/   .title
+/     = good.title
+/   .body
+/     = good.body
+/   .price
+/     = number_to_currency(good.price)
+/   = link_to 'Edit', edit_good_path(good)
+/   = link_to 'Delete', good_path(good), method: 'delete'
+paper-card heading=good.title
+  .card-content= good.body
+  .card-actions
+    paper-button
+      = link_to 'Edit', edit_good_path(good)
+    paper-button
+      = link_to 'Delete', good_path(good), method: 'delete'
