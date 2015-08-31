@@ -1,5 +1,5 @@
 {
-  "name": "polymer-project",
+  "name": "furima",
   "dependencies": {
     "gold-email-input": "PolymerElements/gold-email-input#^1.0.0",
     "gold-phone-input": "PolymerElements/gold-phone-input#^1.0.0",
