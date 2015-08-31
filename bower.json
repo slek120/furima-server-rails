@@ -28,6 +28,7 @@
     "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.0",
     "iron-selector": "PolymerElements/iron-selector#^1.0.0",
     "iron-signals": "PolymerElements/iron-signals#^1.0.0",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#~1.0.3",
     "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior#^1.0.0",
     "iron-validator-behavior": "PolymerElements/iron-validator-behavior#^1.0.0",
     "neon-animation": "PolymerElements/neon-animation#^1.0.0",
