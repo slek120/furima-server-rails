@@ -328,7 +328,7 @@ DEPENDENCIES
   slim-rails
   split
   spring
-  sprockets
+  sprockets (~> 3.0)
   sqlite3
   therubyracer
   turbolinks
