@@ -10,15 +10,6 @@ GIT
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
 
-GIT
-  remote: git://github.com/slek120/polymer-rails.git
-  revision: 6e19d424267581bd045270a952bab31d3c6cef05
-  specs:
-    polymer-rails (1.1.0)
-      nokogiri (~> 1.6)
-      nokogumbo (~> 1.1)
-      rails (>= 3.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -181,6 +172,10 @@ GEM
     passenger (5.0.16)
       rack
       rake (>= 0.8.1)
+    polymer-rails (1.1.0)
+      nokogiri (~> 1.6)
+      nokogumbo (~> 1.1)
+      rails (>= 3.1.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -325,7 +320,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   passenger
-  polymer-rails!
+  polymer-rails
   rails (= 4.2.1)
   rspec-rails
   sass-rails (~> 5.0)
@@ -333,6 +328,7 @@ DEPENDENCIES
   slim-rails
   split
   spring
+  sprockets
   sqlite3
   therubyracer
   turbolinks
