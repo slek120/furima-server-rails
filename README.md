@@ -110,7 +110,9 @@ ctrl-x and confirm with y to save and exit
 ## Install development tools
 
     sudo apt-get update
-    sudo apt-get install build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs libsqlite3-dev sqlite3
+    sudo apt-get install build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev nodejs nodejs-legacy npm libsqlite3-dev sqlite3
+    sudo npm install -g bower
+
 
 ## Install ruby
 
