@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/slek120/polymer-rails.git
-  revision: f9df5f4bb0880e6e4c97c6443bdbebbcc61ad5bf
+  revision: 6e19d424267581bd045270a952bab31d3c6cef05
   specs:
     polymer-rails (1.1.0)
       nokogiri (~> 1.6)
