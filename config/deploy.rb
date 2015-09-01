@@ -14,24 +14,42 @@ set :branch, 'master'
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', '.rbenv-vars']
 
-# Optional settings:
-#   set :port, '30000'     # SSH port number.
-#   set :forward_agent, true     # SSH forward_agent.
-
-# This task is the environment that is loaded for most commands, such as
-# `mina deploy` or `mina rake`.
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .ruby-version or .rbenv-version to your repository.
   invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
-  # invoke :'rvm:use[ruby-1.9.3-p125@default]'
 end
 
-# Put any custom mkdir's in here for when `mina setup` is ran.
-# For Rails apps, we'll make some of the shared paths that are shared between
-# all releases.
+namespace :production do
+  task :setup do
+    set :deploy_to, '/home/furima/production'
+    set :rails_env, 'production'
+    set :branch, 'master'
+    invoke :setup
+  end
+
+  task :deploy do
+    set :deploy_to, '/home/furima/production'
+    set :rails_env, 'production'
+    set :branch, 'master'
+    invoke :deploy
+  end
+end
+
+namespace :staging do
+  task :setup do
+    set :deploy_to, '/home/furima/staging'
+    set :rails_env, 'staging'
+    set :branch, 'develop'
+    invoke :setup
+  end
+
+  task :deploy do
+    set :deploy_to, '/home/furima/staging'
+    set :rails_env, 'staging'
+    set :branch, 'develop'
+    invoke :deploy
+  end
+end
+
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
@@ -41,7 +59,8 @@ task :setup => :environment do
 
   queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml' and 'secrets.yml'."]
+  queue! %[touch "#{deploy_to}/#{shared_path}/.rbenv-vars"]
+  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml', 'secrets.yml', and '.rbenv-vars'."]
 
   queue %[
     repo_host=`echo $repo | sed -e 's/.*@//g' -e 's/:.*//g'` &&
@@ -62,8 +81,6 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    queue  %[echo "-----> Installing library dependencies using Bower"]
-    queue! %[bower install]
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
