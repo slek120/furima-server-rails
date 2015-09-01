@@ -38,7 +38,7 @@ gem 'passenger'
 gem 'meta-tags'
 
 # AB testing
-gem 'split', :require => 'split/dashboard'
+# gem 'split', :require => 'split/dashboard'
 
 # Bootstrap library
 gem 'bootstrap-sass'
@@ -74,8 +74,6 @@ gem 'omniauth-google-oauth2'
 group :development do
   # Use Mina for deployment
   gem 'mina'
-  # gem 'mina-nginx'
-
   # gem 'bullet'
   gem 'better_errors'
   gem 'annotate'
