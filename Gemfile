@@ -44,9 +44,6 @@ gem 'meta-tags'
 gem 'bootstrap-sass'
 # gem 'bootstrap-wysihtml5-rails' # Text input
 
-# Web components
-gem 'polymer-rails', github: 'slek120/polymer-rails'
-
 # Tags
 # gem 'awesome_nested_set'
 # gem 'acts-as-taggable-on', '~> 3.4'

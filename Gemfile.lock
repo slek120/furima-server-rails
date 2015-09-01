@@ -10,15 +10,6 @@ GIT
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
 
-GIT
-  remote: git://github.com/slek120/polymer-rails.git
-  revision: 6ebc6d44ab8f44779f5ffd7e5fffa87537069fba
-  specs:
-    polymer-rails (1.1.0)
-      nokogiri (~> 1.6)
-      nokogumbo (~> 1.1)
-      rails (>= 3.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,8 +145,6 @@ GEM
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    nokogumbo (1.4.2)
-      nokogiri
     notiffany (0.0.7)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -186,8 +175,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.6.4)
-    rack-protection (1.5.3)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.1)
@@ -219,9 +206,6 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
-    redis (3.2.1)
-    redis-namespace (1.5.2)
-      redis (~> 3.0, >= 3.0.4)
     ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -257,11 +241,6 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
-    simple-random (1.0.1)
-    sinatra (1.4.6)
-      rack (~> 1.4)
-      rack-protection (~> 1.4)
-      tilt (>= 1.3, < 3)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -272,11 +251,6 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
-    split (1.2.1)
-      redis (>= 2.1)
-      redis-namespace (>= 1.1.0)
-      simple-random
-      sinatra (>= 1.2.6)
     spring (1.3.6)
     sprockets (3.3.3)
       rack (~> 1.0)
@@ -325,13 +299,11 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   passenger
-  polymer-rails!
   rails (= 4.2.1)
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slim-rails
-  split
   spring
   sqlite3
   therubyracer
