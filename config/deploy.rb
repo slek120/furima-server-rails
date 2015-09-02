@@ -18,36 +18,44 @@ task :environment do
   invoke :'rbenv:load'
 end
 
-namespace :production do
-  task :setup do
-    set :deploy_to, '/home/furima/production'
+namespace :setup do
+  desc "Prepares the production version on the server."
+  task :production do
+    set :deploy_to, '/home/furima/test/production'
     set :rails_env, 'production'
     set :branch, 'master'
     invoke :setup
   end
 
-  task :deploy do
-    set :deploy_to, '/home/furima/production'
-    set :rails_env, 'production'
-    set :branch, 'master'
-    invoke :deploy
+  desc "Prepares the staging version on the server."
+  task :staging do
+    set :deploy_to, '/home/furima/test/staging'
+    set :rails_env, 'staging'
+    set :branch, 'develop'
+    invoke :setup
   end
+
+  task :all => [:'setup:production', :'setup:staging']
 end
 
-namespace :staging do
-  task :setup do
-    set :deploy_to, '/home/furima/staging'
-    set :rails_env, 'staging'
-    set :branch, 'develop'
-    invoke :setup
+namespace :deploy do
+  desc "Deploys the production version to the server."
+  task :production do
+    set :deploy_to, '/home/furima/production'
+    set :rails_env, 'production'
+    set :branch, 'master'
+    invoke :deploy
   end
 
-  task :deploy do
+  desc "Deploys the staging version to the server."
+  task :staging do
     set :deploy_to, '/home/furima/staging'
     set :rails_env, 'staging'
     set :branch, 'develop'
     invoke :deploy
   end
+
+  task :all => [:'deploy:production', :'deploy:staging']
 end
 
 task :setup => :environment do
