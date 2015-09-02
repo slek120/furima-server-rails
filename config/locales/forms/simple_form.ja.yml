@@ -1,0 +1,32 @@
+ja:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: '必要'
+      mark: '*'
+    error_notification:
+      default_message: "以下のエラーを確認してください:"
+    labels:
+      defaults:
+        password: 'パスワード'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail'
+      good:
+        title: タイトル
+        body: 本文
+        price: 値段
+        expired_at: 期限
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
+    include_blanks:
+      defaults:
+        age: 'Rather not say'
+    prompts:
+      defaults:
+        age: 'Select your age'

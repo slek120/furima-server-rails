@@ -1,4 +1,4 @@
-en:
+ja:
   date:
     formats:
       # Use the strftime parameters for formats.
@@ -8,32 +8,30 @@ en:
       short: "%b %d"
       long: "%B %d, %Y"
 
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
-    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    day_names: [日曜日, 月曜部, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
-    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    month_names: [~, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    abbr_month_names: [~, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     # Used in date_select and datetime_select.
     order:
+      - year
       - month
       - day
-      - year
 
   time:
     formats:
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      short: "%d %b %H:%M"
-      long: "%B %d, %Y %H:%M"
+      default: "%a, %Y年%b月%d日  %H:%M:%S %z"
+      short: "%b月%d日 %H:%M"
+      long: "%Y年%B月%d日 %H:%M"
     am: "am"
     pm: "pm"
 
 # Used in array.to_sentence.
   support:
     array:
-      words_connector: ", "
-      two_words_connector: " and "
-      last_word_connector: ", and "
+      words_connector: "、"
   number:
     # Used in NumberHelper.number_to_delimited()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
@@ -97,11 +95,9 @@ en:
       storage_units:
         # Storage units output formatting.
         # %u is the storage unit, %n is the number (default: 2 MB)
-        format: "%n %u"
+        format: "%n%u"
         units:
-          byte:
-            one:   "Byte"
-            other: "Bytes"
+          byte: バイト
           kb: "KB"
           mb: "MB"
           gb: "GB"
@@ -126,8 +122,8 @@ en:
           #   one: Ten
           #   other: Tens
           # hundred: Hundred
-          thousand: Thousand
-          million: Million
-          billion: Billion
-          trillion: Trillion
-          quadrillion: Quadrillion
+          thousand: 千
+          million: 百万
+          billion: 十億
+          trillion: 兆
+          quadrillion: 千兆
