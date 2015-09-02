@@ -1,9 +1,13 @@
-.good
-  .title
+.panel.panel-default
+  .panel-heading
     = good.title
-  .body
-    = good.body
-  .price
-    = number_to_currency(good.price)
-  = link_to 'Edit', edit_good_path(good)
-  = link_to 'Delete', good_path(good), method: 'delete'
+  .panel-body
+    .good
+      - good.good_images.each do |image|
+        = image_tag image.image.thumb.url
+      .body
+        = good.body
+      .price
+        = number_to_currency(good.price)
+      = link_to 'Edit', edit_good_path(good), class: 'btn btn-warning'
+      = link_to 'Delete', good_path(good), method: 'delete', class: 'btn btn-danger'
