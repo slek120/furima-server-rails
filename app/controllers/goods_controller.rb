@@ -7,7 +7,8 @@ class GoodsController < ApplicationController
   end
 
   def create
-    @good = Good.create(good_params)
+    @good = current_user.goods.create(good_params)
+    @good.good_images << GoodImage.create(image_params)
     redirect_to goods_path, notice: 'Successfully created'
   end
 
@@ -37,5 +38,9 @@ class GoodsController < ApplicationController
 
   def good_params
     params.require(:good).permit(:title, :body, :price, :expired_at)
+  end
+
+  def image_params
+    params.require(:good_image).permit(:image)
   end
 end

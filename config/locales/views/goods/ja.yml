@@ -1,6 +1,7 @@
 ja:
   goods:
     form:
+      form: 品物フォーム
       title: タイトル
       body: 本文
       price: 値段

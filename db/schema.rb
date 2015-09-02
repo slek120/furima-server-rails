@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830155106) do
+ActiveRecord::Schema.define(version: 20150902035740) do
+
+  create_table "good_images", force: :cascade do |t|
+    t.integer  "good_id",    limit: 4
+    t.string   "image",      limit: 255
+    t.integer  "index",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "good_images", ["good_id"], name: "index_good_images_on_good_id", using: :btree
 
   create_table "goods", force: :cascade do |t|
     t.string   "title",      limit: 255

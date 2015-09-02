@@ -1,7 +1,13 @@
-= form_for Good.new do |f|
-  = f.label :good
-  = f.text_field :title, placeholder: t('.title')
-  = f.text_field :body, placeholder: t('.body')
-  = f.number_field :price, placeholder: t('.price')
-  = f.date_field :expired_at
-  = f.submit
+.panel.panel-primary
+  .panel-heading
+    = t('.form')
+  .panel-body
+    = simple_form_for Good.new, :html => {:multipart => true} do |f|
+      = f.text_field :title, label: t('.title') , placeholder: t('.title')
+      = f.text_field :body, placeholder: t('.body')
+      = f.number_field :price, placeholder: t('.price')
+      = f.date_field :expired_at
+      = fields_for GoodImage.new do |i|
+        = i.file_field :image, multiple: true, accept: 'image/png,image/gif,image/jpeg'
+      .form-actions
+        = f.submit class: 'btn btn-primary'

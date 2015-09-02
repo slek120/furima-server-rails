@@ -12,4 +12,5 @@
 #
 
 class Good < ActiveRecord::Base
+  has_many :good_images
 end
