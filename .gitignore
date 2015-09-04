@@ -49,8 +49,8 @@ config/database.yml
 
 # if using bower-rails ignore default bower_components path bower.json files
 /vendor/assets/components
-# *.bowerrc
-# bower.json
+*.bowerrc
+bower.json
 
 # Ignore pow environment settings
 .powenv
@@ -83,3 +83,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.pem
+
+/public/uploads
