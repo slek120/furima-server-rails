@@ -13,7 +13,5 @@
         = f.input :expired_at, as: :date
         = f.simple_fields_for @image do |i|
           = i.input :image, input_html: {multiple: true, name: "good_image[image]"}
-        / = f.fields_for @image do |i|
-          / = i.file_field :image, name: "good_image[image]"
       .form-actions
         = f.submit class: 'btn btn-primary'
