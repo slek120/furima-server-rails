@@ -90,7 +90,8 @@ gem 'rmagick', require: false
 group :development do
   # Use Mina for deployment
   gem 'mina'
-  # gem 'bullet'
+  
+  gem 'bullet'
   gem 'better_errors'
   gem 'annotate'
   gem 'letter_opener'
