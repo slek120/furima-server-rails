@@ -32,6 +32,8 @@ ja:
   support:
     array:
       words_connector: "、"
+      two_words_connector: "と"
+      last_word_connector: "、と"
   number:
     # Used in NumberHelper.number_to_delimited()
     # These are also the defaults for 'currency', 'percentage', 'precision', and 'human'
