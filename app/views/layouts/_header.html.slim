@@ -14,3 +14,5 @@ header
           li= link_to t('path.goods'), goods_path
           li= link_to t('path.events'), '#'
           li= link_to t('path.groups'), '#'
+        ul.nav.navbar-nav.navbar-right
+          li= link_to current_user.name, current_user
