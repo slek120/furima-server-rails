@@ -1,6 +1,7 @@
 .panel.panel-default
   .panel-heading
-    = good.title
+    .pull-right = link_to good.user.name, good.user
+    h3.panel-title = good.title.titleize
   .panel-body
     .good
       - good.good_images.each do |image|
