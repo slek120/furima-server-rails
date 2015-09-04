@@ -1,5 +1,7 @@
 ja:
   goods:
+    index:
+      new: 新しい品物を作成する
     form:
       form: 品物フォーム
       title: タイトル
