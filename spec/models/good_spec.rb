@@ -6,9 +6,10 @@
 #  title      :string(255)
 #  body       :string(255)
 #  price      :decimal(10, )
-#  expired_at :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  expired_at :datetime
+#  user_id    :integer
 #
 
 require 'rails_helper'

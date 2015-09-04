@@ -2,12 +2,18 @@
   .panel-heading
     = t('.form')
   .panel-body
-    = simple_form_for Good.new, :html => {:multipart => true} do |f|
-      = f.text_field :title, label: t('.title') , placeholder: t('.title')
-      = f.text_field :body, placeholder: t('.body')
-      = f.number_field :price, placeholder: t('.price')
-      = f.date_field :expired_at
-      = fields_for GoodImage.new do |i|
-        = i.file_field :image, multiple: true, accept: 'image/png,image/gif,image/jpeg'
+    = simple_form_for @good do |f|
+      .form-inputs
+        = f.input :title
+        = f.input :body, as: :text, input_html: {rows: 5}
+        .input-group
+          span.input-group-addon $
+          = f.input_field :price, class: 'form-control'
+          span.input-group-addon .00
+        = f.input :expired_at, as: :date
+        = f.simple_fields_for @image do |i|
+          = i.input :image, input_html: {multiple: true, name: "good_image[image]"}
+        / = f.fields_for @image do |i|
+          / = i.file_field :image, name: "good_image[image]"
       .form-actions
         = f.submit class: 'btn btn-primary'

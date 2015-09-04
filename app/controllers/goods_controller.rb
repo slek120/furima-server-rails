@@ -6,12 +6,20 @@ class GoodsController < ApplicationController
   end
 
   def new
+    @good = current_user.goods.new
+    @image = @good.good_images.build
   end
 
   def create
-    @good = current_user.goods.create(good_params)
-    @good.good_images << GoodImage.create(image_params)
-    redirect_to goods_path, notice: 'Successfully created'
+    @good = current_user.goods.new(good_params)
+    if @good.save
+      params[:good_image]['image'].each do |img|
+        @good_image = @good.good_images.create!(image: img)
+      end
+      redirect_to edit_good_path(@good)
+    else
+      redirect_to goods_path, alert: 'There was a problem'
+    end
   end
 
   def edit
@@ -21,7 +29,7 @@ class GoodsController < ApplicationController
     if @good.update_attributes(good_params)
       redirect_to good_path(good), notice: 'Successfully updated'
     else
-      redirect_to :back, notice: 'Could not update'
+      redirect_to :back, alert: 'Could not update'
     end 
   end
 
@@ -39,7 +47,7 @@ class GoodsController < ApplicationController
     @good = Good.find(params[:id])
   end
 
-  def image_params
-    params.require(:good_image).permit(:image)
+  def good_params
+    params.require(:good).permit(:title, :body, :price, :expired_at, good_image_attributes: [:id, :good_id, :image, :index])
   end
 end

@@ -22,15 +22,20 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  provider               :string(255)
+#  uid                    :string(255)
+#  name                   :string(255)
 #
 
 class User < ActiveRecord::Base
+  has_many :goods
+  accepts_nested_attributes_for :goods
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
-
 
   def self.from_omniauth(access_token)
     user = User.where(provider: access_token.provider, uid: access_token.uid).first
