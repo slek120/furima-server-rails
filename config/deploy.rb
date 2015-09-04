@@ -6,9 +6,12 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 set :domain, '52.88.0.200'
 set :user, 'furima'
 set :identity_file, 'furima_key.pem'
-set :deploy_to, '/var/apps/furima/'
 set :repository, 'https://github.com/slek120/furima-server-rails.git'
-set :branch, 'master'
+
+# Default environment
+set :deploy_to, '/home/furima/staging'
+set :rails_env, 'staging'
+set :branch, 'develop'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -21,7 +24,7 @@ end
 namespace :setup do
   desc "Prepares the production version on the server."
   task :production do
-    set :deploy_to, '/home/furima/test/production'
+    set :deploy_to, '/home/furima/production'
     set :rails_env, 'production'
     set :branch, 'master'
     invoke :setup
@@ -29,13 +32,11 @@ namespace :setup do
 
   desc "Prepares the staging version on the server."
   task :staging do
-    set :deploy_to, '/home/furima/test/staging'
+    set :deploy_to, '/home/furima/staging'
     set :rails_env, 'staging'
     set :branch, 'develop'
     invoke :setup
   end
-
-  task :all => [:'setup:production', :'setup:staging']
 end
 
 namespace :deploy do
@@ -54,8 +55,6 @@ namespace :deploy do
     set :branch, 'develop'
     invoke :deploy
   end
-
-  task :all => [:'deploy:production', :'deploy:staging']
 end
 
 task :setup => :environment do
@@ -78,7 +77,7 @@ task :setup => :environment do
   ]
 end
 
-desc "Deploys the current version to the server."
+desc "Deploys the default current version to the server."
 task :deploy => :environment do
   to :before_hook do
     # Put things to run locally before ssh
