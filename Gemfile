@@ -61,6 +61,7 @@ gem 'meta-tags'
 # Bootstrap library
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'nested_form'
 # gem 'bootstrap-wysihtml5-rails' # Text input
 
 # Tags
@@ -90,10 +91,23 @@ gem 'rmagick', require: false
 group :development do
   # Use Mina for deployment
   gem 'mina'
-  
+  # For Rails panel chrome extension
+  gem 'meta_request'
+  # Add debug 'pause' 'next' and 'exit'
+  gem 'pry-rails'
+  # Pretty print method 'Rails.logger.ap @object'
+  gem 'awesome_print'
+  # Don't log 'Started GET "/assets/...'
+  gem 'quiet_assets'
+  # Warn unoptimized queries
   gem 'bullet'
+  # Improved error page
   gem 'better_errors'
+  # View local variables in error page
+  gem 'binding_of_caller'
+  # Add comments to models with 'annotate' command
   gem 'annotate'
+  # Development mailer delivery method
   gem 'letter_opener'
 end
 
