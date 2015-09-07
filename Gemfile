@@ -97,7 +97,7 @@ group :development do
   # Add debug 'pause' 'next' and 'exit'
   gem 'pry-rails'
   # Pretty print method 'Rails.logger.ap @object'
-  # gem 'awesome_print'
+  gem 'awesome_print'
   # Don't log 'Started GET "/assets/...'
   gem 'quiet_assets'
   # Warn unoptimized queries
