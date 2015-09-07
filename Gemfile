@@ -61,7 +61,8 @@ gem 'meta-tags'
 # Bootstrap library
 gem 'bootstrap-sass'
 gem 'simple_form'
-gem 'nested_form'
+gem 'simple_form_fancy_uploads'
+# gem 'nested_form'
 # gem 'bootstrap-wysihtml5-rails' # Text input
 
 # Tags
