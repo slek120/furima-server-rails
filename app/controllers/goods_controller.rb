@@ -3,7 +3,7 @@ class GoodsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @goods = Good.all
+    @goods = Good.includes(:good_images, :user)
   end
 
   def new
