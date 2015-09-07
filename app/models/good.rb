@@ -17,4 +17,5 @@ class Good < ActiveRecord::Base
   has_many :good_images, dependent: :destroy
   accepts_nested_attributes_for :good_images, allow_destroy: true
   validates_associated :good_images
+  default_scope {order('id desc')}
 end
