@@ -28,7 +28,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :goods
+  has_many :goods, dependent: :destroy
   accepts_nested_attributes_for :goods
   
   # Include default devise modules. Others available are:
