@@ -199,6 +199,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
@@ -340,6 +342,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   passenger
   pry-rails
+  quiet_assets
   rails (= 4.2.1)
   rmagick
   rspec-rails
