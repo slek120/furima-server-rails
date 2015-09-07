@@ -14,6 +14,7 @@
 
 class Good < ActiveRecord::Base
   belongs_to :user
-  has_many :good_images
-  accepts_nested_attributes_for :good_images
+  has_many :good_images, dependent: :destroy
+  accepts_nested_attributes_for :good_images, allow_destroy: true
+  validates_associated :good_images
 end
