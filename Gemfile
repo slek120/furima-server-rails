@@ -94,8 +94,10 @@ group :development do
   gem 'mina'
   # For Rails panel chrome extension
   gem 'meta_request'
-  # Add debug 'pause' 'next' and 'exit'
+  # Use Pry REPL for rails console
   gem 'pry-rails'
+  # Add 'step', 'next', 'finish', 'continue' commands
+  gem 'pry-byebug'
   # Pretty print method 'Rails.logger.ap @object'
   gem 'awesome_print'
   # Don't log 'Started GET "/assets/...'
