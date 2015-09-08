@@ -73,7 +73,7 @@ gem 'simple_form_fancy_uploads'
 # gem 'kaminari'
 
 # Log in
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 # gem 'cancancan' # For restrictions and privileges
