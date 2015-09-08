@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 
 $(document).ready(function() {
@@ -22,3 +24,7 @@ $(document).ready(function() {
     trigger: 'hover'
   });
 });
+
+$(document).on('page:fetch', function() { NProgress.start(); })
+$(document).on('page:change', function() { NProgress.done(); })
+$(document).on('page:restore', function() { NProgress.remove(); })
