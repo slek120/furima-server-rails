@@ -14,9 +14,9 @@ class GoodsController < ApplicationController
   def create
     @good = current_user.goods.new(good_params)
     if @good.save
-      redirect_to edit_good_path(@good)
+      redirect_to good_path(@good), notice: 'Successfully created'
     else
-      redirect_to goods_path, alert: 'There was a problem'
+      redirect_to goods_path, alert: 'Could not create'
     end
   end
 
