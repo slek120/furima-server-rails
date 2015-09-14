@@ -17,6 +17,6 @@
             = ff.input :image, as: :image_preview, label: false, input_html: {preview_version: :thumb}
             .caption
               = ff.input :caption, label_html: { class: 'sr-only'}
-              / .text-right= link_to t('btn.delete'), good_image_path([img, img.id]), method: 'delete', class: 'btn btn-warning'
+              = ff.input :_destroy, as: :boolean, inline_label: '削除' 
       .form-actions
         = f.submit class: 'btn btn-primary'
