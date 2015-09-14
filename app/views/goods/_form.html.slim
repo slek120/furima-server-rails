@@ -12,7 +12,6 @@
             span.input-group-addon $
             = f.input_field :price, class: 'form-control'
             span.input-group-addon .00
-        = f.input :expired_at, as: :date
         = f.simple_fields_for :good_images do |ff|
           .thumbnail
             = ff.input :image, as: :image_preview, label: false, input_html: {preview_version: :thumb}
