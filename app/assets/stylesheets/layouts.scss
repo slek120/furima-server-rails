@@ -5,6 +5,9 @@ body {
 }
 header {
   margin-bottom: $navbar-height;
+  a {
+    color: $text-color;
+  }
 }
 .main {
   flex: 1;

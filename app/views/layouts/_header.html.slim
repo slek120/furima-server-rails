@@ -5,6 +5,12 @@ header
         button.navbar-toggle.collapsed type='button' data-toggle='collapse' data-target='#navbar'
           span.glyphicon.glyphicon-menu-hamburger
         = link_to t('title'), root_path, class: 'navbar-brand'
+        .pull-right
+          p.navbar-text
+            - if user_signed_in?
+              = link_to current_user.name, current_user, rel: 'nofollow'
+            - else
+              = link_to t('login'), new_user_session_path, rel: 'nofollow'
       #navbar.navbar-collapse.collapse
         ul.nav.navbar-nav
           li= link_to t('path.profile'), '#'
@@ -14,5 +20,3 @@ header
           li= link_to t('path.goods'), goods_path
           li= link_to t('path.events'), '#'
           li= link_to t('path.groups'), '#'
-        ul.nav.navbar-nav.navbar-right
-          li= link_to current_user.name, current_user if current_user
